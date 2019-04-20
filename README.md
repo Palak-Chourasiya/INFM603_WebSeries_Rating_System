@@ -4,7 +4,8 @@ This repo will contain :
 
 HTML, CSS, PHP and MySQL files for the Web series rating system.
 
-
+GIT commands:
+https://confluence.atlassian.com/bitbucket/branching-a-repository-223217999.html
 
 GIT Commands:
 push your changes to BRANCH
