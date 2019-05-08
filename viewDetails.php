@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
 <style>
         body {background-color: black;
         color: powderblue;
@@ -87,6 +86,8 @@ $WID= $_GET['web_id'];
 		$showName= $row1['name'];
 
 ?>
+
+
  <table border = "2" cellpadding = "3" cellspacing = "2" style = "background-color: ADD8E6" align="left" padding="50px">
 	   
 	   <tr>
@@ -94,14 +95,16 @@ $WID= $_GET['web_id'];
 		</tr>
 <?php			
 $url=""; 
-		$sql2="SELECT current_rating, past_rating FROM ShowDetails WHERE web_id = $WID";	
+		$sql2="SELECT avg(ReviewDetails.show_rating) as total_rating FROM ReviewDetails JOIN ShowReview ON (ReviewDetails.review_id =ShowReview.review_id)
+		WHERE ShowReview.web_id = $WID";
+
 		$result2 = $database->query($sql2);
 		$row2 =$result2->fetch_array();
-		$cuRating = $row2['current_rating'];
-		$pastRating= $row2['past_rating'];
+		$cuRating = $row2['total_rating'];
+		//$pastRating= $row2['past_rating'];
 		
 		echo "<h6>"."Show Current Rating ".$cuRating."/5"."</h6>";
-		echo "<h6>"."Past Rating ".$pastRating."/5"."<h6>";
+		//echo "<h6>"."Past Rating ".$pastRating."/5"."<h6>";
 		
 			$sql = "SELECT UserProfile.user_id, UserProfile.user_name, ReviewDetails.comment FROM UserProfile JOIN UserReviews On (UserProfile.user_id = UserReviews.user_id)
 						Join ReviewDetails ON (UserReviews.review_id = ReviewDetails.review_id)
@@ -127,16 +130,19 @@ $url="";
 </div>
 
 <div  class="rating">
+<form method="post" action="http://palak123.psjconsulting.com/addComments.php?showID=<?php echo $WID; ?>">
 <label>Choose Rating</label>
 <input type="radio" name="rating" value="1"> 1
 <input type="radio" name="rating" value="2"> 2
 <input type="radio" name="rating" value="3"> 3
-<input type="radio" name="rating" value="4">4
-<input type="radio" name="rating" value="5">5
+<input type="radio" name="rating" value="4"> 4
+<input type="radio" name="rating" value="5"> 5
 <br>
 <label>Write your review</label><br>
-<input type="textarea" name="review"><br>
-<a href="logout.php" class="btn btn-primary">Add review</a>
+<input type="text" name="review"><br>
+<input type="submit" value="Add views" class="btn btn-primary">
+</form>
+
 </div>
 <a href="webDetails.php" class="btn btn-primary">View All Shows</a>
 </body>
