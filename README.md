@@ -4,24 +4,15 @@ This repo will contain :
 
 HTML, CSS, PHP and MySQL files for the Web series rating system.
 
-GIT commands:
-https://confluence.atlassian.com/bitbucket/branching-a-repository-223217999.html
-
-GIT Commands:
-push your changes to BRANCH
--git push --set-upstream origin BRANCH
--git checkout master
--git pull
--git merge BRANCH
--git add .
--git commit
--git push
--git checkout BRANCH
--git merge master
--git add .
--git commit
--git push
+Functionalities:
+User Account creation
+Login page
+Browsing the web-series
+Retrieval of ratings, reviews, description from the database
+Ability to add new reviews and ratings
 
 
-Testing
-Test
+
+
+Powerpoint Link:
+https://docs.google.com/presentation/d/1tuUQQc64m6wz8NLk69FIVUszAMW651Cd6_jVrxHxAzI/edit?usp=sharing
